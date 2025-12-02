@@ -36,7 +36,7 @@ This dashboard acts as an automated analyst. It accepts raw CSV data (or uses a 
 
 1.  **Clone this repository** (or download the `.py` file):
     ```bash
-    git clone [https://github.com/TaherAli11/BA-Dashboard.git](https://github.com/TaherAli11/BA-Dashboard.git)
+    git clone https://github.com/TaherAli11/BA-Dashboard.git
     cd ai-business-analyst
     ```
 
