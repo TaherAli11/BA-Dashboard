@@ -28,7 +28,7 @@ TEXT_COLOR = "#E6EEF3"
 MUTED_COLOR = "#98A0AB"
 CHART_COLORS = [ACCENT_A, ACCENT_B, "#9BE7FF", "#C7B3FF", "#6EE7B7", "#F472B6"]
 
-st.set_page_config(page_title="AI Business Analyst", layout="wide", page_icon="-B|A")
+st.set_page_config(page_title="Business Analyst", layout="wide", page_icon="")
 
 # Modern CSS with specific targeting
 st.markdown(f"""
@@ -231,7 +231,7 @@ with st.sidebar:
         df_raw = load_sample_data()
 
     st.markdown("---")
-    st.markdown("## ⚙️ Settings")
+    st.markdown("## âš™ï¸ Settings")
     outlier_thresh = st.slider("Outlier Sensitivity (Z-Score)", 2.0, 5.0, 3.0, 0.1)
     
     st.markdown("---")
@@ -240,7 +240,7 @@ with st.sidebar:
 # Main Page Logic
 if df_raw is None:
     st.markdown("<div class='dashboard-header'><h1 class='main-title'>Welcome</h1><p class='sub-title'>Upload data to begin analysis</p></div>", unsafe_allow_html=True)
-    st.info("👈 Please upload a CSV file or select 'Use Sample Data' in the sidebar.")
+    st.info("ðŸ‘ˆ Please upload a CSV file or select 'Use Sample Data' in the sidebar.")
     st.stop()
 
 # Clean Data
@@ -300,7 +300,7 @@ else:
 # -----------------------
 # 2. Main Tabs
 # -----------------------
-tab_viz, tab_data, tab_insight = st.tabs(["📈 Visualizations", "📄 Data & Stats", "🧠 Automated Insights"])
+tab_viz, tab_data, tab_insight = st.tabs(["ðŸ“ˆ Visualizations", "ðŸ“„ Data & Stats", "ðŸ§  Automated Insights"])
 
 with tab_viz:
     col_viz_1, col_viz_2 = st.columns([1, 3])
@@ -399,7 +399,7 @@ with tab_insight:
         
         pairs.sort(key=lambda x: abs(x[2]), reverse=True)
         
-        st.markdown(f"<div class='insight-card'><h4>🔗 Key Correlations</h4>", unsafe_allow_html=True)
+        st.markdown(f"<div class='insight-card'><h4>ðŸ”— Key Correlations</h4>", unsafe_allow_html=True)
         if pairs:
             for c1, c2, v in pairs[:5]:
                 strength = "Positive" if v > 0 else "Negative"
@@ -409,7 +409,7 @@ with tab_insight:
         st.markdown("</div>", unsafe_allow_html=True)
     
     # 2. Outlier Analysis
-    st.markdown(f"<div class='insight-card'><h4>⚠️ Anomaly Detection</h4>", unsafe_allow_html=True)
+    st.markdown(f"<div class='insight-card'><h4>âš ï¸ Anomaly Detection</h4>", unsafe_allow_html=True)
     outlier_found = False
     for col in semantics['num_cols'][:5]: # check top 5 numeric
         idxs = get_outliers(df[col], z_thresh=outlier_thresh)
@@ -423,7 +423,7 @@ with tab_insight:
 
     # 3. Trend Analysis (Simple Slope)
     if semantics['date_col'] and semantics['target_col']:
-        st.markdown(f"<div class='insight-card'><h4>📈 Trend Analysis</h4>", unsafe_allow_html=True)
+        st.markdown(f"<div class='insight-card'><h4>ðŸ“ˆ Trend Analysis</h4>", unsafe_allow_html=True)
         temp = df.dropna(subset=[semantics['date_col'], semantics['target_col']])
         # Aggregate to weekly to smooth noise
         trend_data = temp.set_index(semantics['date_col']).resample('W')[semantics['target_col']].sum()

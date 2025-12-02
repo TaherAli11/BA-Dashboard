@@ -8,7 +8,6 @@ A modern, single-file **Streamlit** application designed to automatically ingest
 
 This dashboard acts as an automated analyst. It accepts raw CSV data (or uses a built-in synthetic generator), cleans it, maps columns to business concepts (like "Revenue", "Date", or "Category"), and performs statistical analysis to find trends, correlations, and outliers. 
 
-[Image of data analysis pipeline architecture]
 
 
 **Key Design Goals:**
